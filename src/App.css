@@ -1,0 +1,19 @@
+.warning {
+    font-size: 50px;
+    padding: 100px;
+    text-align: center;
+  }
+  label{
+      font-size: 30px;
+  }
+input{
+    width: 500px;
+    height: 31px;
+    border: none;
+    font-size: 20px;
+    color: #49484a;
+    font-family: "Roboto Mono", monospace;
+}  
+input:focus{
+    outline:  0px;
+}

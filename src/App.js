@@ -1,5 +1,7 @@
 import React from "react";
 import WeatherDisplay from "./WeatherDisplay";
+import './App.css'
+const KEY = "a27e349dc5c35c5fdb3ec0f87a9d3d9c";
 class App extends React.Component {
   constructor() {
     super();
@@ -8,7 +10,6 @@ class App extends React.Component {
       lon: "",
       success: false,
     };
-
     this.onSuccessGeo = this.onSuccessGeo.bind(this);
   }
   onSuccessGeo(pos) {
@@ -28,16 +29,44 @@ class App extends React.Component {
       options
     );
   }
-
+  onManual(event) {
+    event.preventDefault();
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${this.searchInput.value}&appid=${KEY}&lang=ru`
+    )
+      .then((response) => response.json())
+      .then((res) => {
+        const { coord } = res;
+        this.setState({
+          lat: coord.lat,
+          lon: coord.lon,
+          success: true,
+        });
+      })
+      .catch((err) => console.error("ERROR", err));
+    this.searchInput.value = "";
+    return false;
+  }
   render() {
     return (
       <>
         {this.state.success ? (
           <WeatherDisplay lat={this.state.lat} lon={this.state.lon} />
         ) : (
-          <div className="warning">
-            Пожалуйста, разрешите доступ к геолокации и обновите страницу!
-          </div>
+          <>
+            <div className="warning">
+              Пожалуйста, разрешите доступ к геолокации и обновите страницу!
+              <form onSubmit={(e) => this.onManual(e)}>
+              <label>Или введите город вручную: <input
+                type="text"
+                ref={(input) => {
+                  this.searchInput = input;
+                }}
+              /></label>
+            </form>
+            </div>
+            
+          </>
         )}
       </>
     );
