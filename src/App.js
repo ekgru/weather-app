@@ -9,7 +9,7 @@ class App extends React.Component {
       lat: "",
       lon: "",
       success: false,
-      error: false,
+      notFound: false,
     };
     this.onSuccessGeo = this.onSuccessGeo.bind(this);
   }
@@ -38,17 +38,17 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((res) => {
         const { coord } = res;
+        if (!coord) return this.setState({ notFound: true });
         this.setState({
           lat: coord.lat,
           lon: coord.lon,
           success: true,
-          error: false,
+          notFound: false,
         });
       })
-      .catch(
-        (err) => console.error("ERROR", err),
-        this.setState({ error: true })
-      );
+      .catch((err) => {
+        console.error("ERROR", err);
+      });
     this.searchInput.value = "";
     return false;
   }
@@ -63,7 +63,7 @@ class App extends React.Component {
               Пожалуйста, разрешите доступ к геолокации и обновите страницу!
               <form onSubmit={(e) => this.onManual(e)}>
                 <label>
-                  Или введите город вручную:{" "}
+                  Или введите город вручную: 
                   <input
                     type="text"
                     ref={(input) => {
@@ -71,14 +71,9 @@ class App extends React.Component {
                     }}
                   />
                 </label>
+                {this.state.notFound ? <p>Город не найден</p> : ""}
               </form>
-              {this.state.error ? (
-                <p>
-                  Проверьте правильность введенных данных и попробуйте еще раз!
-                </p>
-              ) : (
-                ""
-              )}
+             
             </div>
           </>
         )}
