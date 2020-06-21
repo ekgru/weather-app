@@ -1,0 +1,11 @@
+#main{
+
+    text-align: right;
+}
+#city-name{
+    font-size: 50px;
+    text-transform: uppercase;
+}
+#date{
+    font-size: 20px;
+}
