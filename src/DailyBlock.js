@@ -1,5 +1,5 @@
 import React from "react";
-import './DailyBlock.css'
+import "./DailyBlock.css";
 export default function DailyBlock(props) {
   const { weather, temp, dt } = props.content;
   let icon = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
@@ -11,7 +11,7 @@ export default function DailyBlock(props) {
   };
   let date = new Date(dt * 1000).toLocaleDateString("ru", options);
   return (
-    <div className='daily-block'>
+    <div className="daily-block">
       <div>{date}</div>
       <img src={icon} alt={weather[0].description} />
       <div>06:00 | {Math.round(temp.morn)}°C</div>

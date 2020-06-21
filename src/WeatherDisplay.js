@@ -54,9 +54,9 @@ export default class WeatherDisplay extends React.Component {
 
   render() {
     return (
-      <div className="main-container">
+      <>
         {this.state.isload ? (
-          <>
+          <div className="main-container">
             <div className="today-content">
               <CityContainer
                 name={this.state.name}
@@ -73,12 +73,12 @@ export default class WeatherDisplay extends React.Component {
               {this.state.daily.map((el, i) => (
                 <DailyBlock key={i * 3.14} content={el} />
               ))}
-            </div>
-          </>
+            </div>{" "}
+          </div>
         ) : (
           <Loader />
         )}
-      </div>
+      </>
     );
   }
 }

@@ -8,4 +8,6 @@
   box-shadow: rgba(0, 0, 0, 0.15) -1px 0px 4px;
   background-color: rgb(255, 255, 255);
   max-width: 230px;
+  min-height: 230px;
+  max-height: 230px;
 }

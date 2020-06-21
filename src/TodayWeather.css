@@ -1,5 +1,20 @@
+@media (max-width: 500px) {
+  .container {
+    font-size: 10px;
+  }
+  .weather-big-description-temp-real {
+    font-size: 30px;
+  }
+}
+@media (min-width: 500px) {
+  .container {
+    font-size: 20px;
+  }
+  .weather-big-description-temp-real {
+    font-size: 50px;
+  }
+}
 .weather-big {
-  margin: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -9,12 +24,10 @@
   display: flex;
 }
 .container {
-  font-size: 20px;
   position: relative;
 }
 .weather-big-description-temp-real {
   position: absolute;
-  font-size: 50px;
   width: 100%;
 }
 .weather-big-description img {
