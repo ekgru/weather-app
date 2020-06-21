@@ -35,7 +35,7 @@ class App extends React.Component {
         {this.state.success ? (
           <WeatherDisplay lat={this.state.lat} lon={this.state.lon} />
         ) : (
-          <div id="warning">
+          <div className="warning">
             Пожалуйста, разрешите доступ к геолокации и обновите страницу!
           </div>
         )}

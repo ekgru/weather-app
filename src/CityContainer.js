@@ -14,9 +14,9 @@ export default function CityContainer(props) {
   setInterval(() => setDate(new Date()), 1000);
   let dateString = date.toLocaleDateString("ru", options);
   return (
-    <div id="main">
-      <div id="city-name">{props.name}</div>
-      <div id="date">Сегодня: {dateString}</div>
+    <div className="main">
+      <div className="city-name">{props.name}</div>
+      <div className="date">Сегодня: {dateString}</div>
       <div>
         Восход солнца: {props.sunrise.getHours()}:{props.sunrise.getMinutes()}
       </div>

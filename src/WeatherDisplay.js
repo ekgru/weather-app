@@ -26,7 +26,7 @@ export default class WeatherDisplay extends React.Component {
           isload: true,
         });
       })
-      .catch((err) => console.log("ERROR", err));
+      .catch((err) => console.error("ERROR", err));
   }
   componentDidMount() {
     fetch(
@@ -42,7 +42,7 @@ export default class WeatherDisplay extends React.Component {
         });
         this.getWeather();
       })
-      .catch((err) => console.log("ERROR", err));
+      .catch((err) => console.error("ERROR", err));
     setInterval(() => this.getWeather(), 300000);
   }
 
@@ -54,7 +54,7 @@ export default class WeatherDisplay extends React.Component {
 
   render() {
     return (
-      <div id="main-container">
+      <div className="main-container">
         {this.state.isload ? (
           <>
             <div className="today-content">
